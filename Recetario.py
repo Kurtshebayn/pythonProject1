@@ -86,11 +86,21 @@ def opcion_2():
     ruta_receta_nueva = Path(categoria_elegida,nombre_receta_nueva)
     with open(Path(ruta_receta_nueva),'w') as file:
         file.write(contenido_receta_nueva)
+        file.close()
     print("En hora buena primo, tu receta ha sido creada")
     volver_al_menu()
 
 
 def opcion_3():
+    nombre_categoria_nueva = input("Dame el nombre de la categoria que quieres crear: ")
+    ruta_categoria_nueva = Path(base,nombre_categoria_nueva)
+    ruta_categoria_nueva.mkdir(parents=True,exist_ok=True)
+    print("En hora buena primo, tu categoria ha sido creada")
+    volver_al_menu()
+
+
+def opcion_4():
+
 
 
 while opcion < 6:
@@ -98,7 +108,7 @@ while opcion < 6:
     print("""Chaval es hora, elige una de las siguientes opciones: 
                 1.- Elige una categoria y luego elige una receta para leerla
                 2.- Elige una categoria y luego crea una receta nueva
-                3.- Crea una nueva caterogira
+                3.- Crea una nueva categoria
                 4.- Elige una categoria, luego elige una receta para eliminarla
                 5.- Elige una categoria y eliminala
                 6.- Salir del recetario""")
@@ -107,4 +117,6 @@ while opcion < 6:
         opcion_1()
     elif opcion == 2:
         opcion_2()
+    elif opcion == 3:
+        opcion_3()
     system('cls')
