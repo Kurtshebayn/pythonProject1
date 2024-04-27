@@ -100,7 +100,12 @@ def opcion_3():
 
 
 def opcion_4():
-
+    categoria = seleccionar_categoria()
+    receta_elegida = seleccionar_receta(categoria)
+    receta_a_eliminar = Path(receta_elegida)
+    receta_a_eliminar.unlink()
+    print("Que pena tío, la receta se ha borrado")
+    volver_al_menu()
 
 
 while opcion < 6:
@@ -119,4 +124,6 @@ while opcion < 6:
         opcion_2()
     elif opcion == 3:
         opcion_3()
+    elif opcion == 4:
+        opcion_4()
     system('cls')
