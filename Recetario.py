@@ -108,6 +108,14 @@ def opcion_4():
     volver_al_menu()
 
 
+def opcion_5():
+    categoria = seleccionar_categoria()
+    categoria_a_eliminar = Path(categoria)
+    categoria_a_eliminar.rmdir()
+    print("Que pena tío, la categoria se ha eliminado")
+    volver_al_menu()
+
+
 while opcion < 6:
     inicio()
     print("""Chaval es hora, elige una de las siguientes opciones: 
@@ -126,4 +134,6 @@ while opcion < 6:
         opcion_3()
     elif opcion == 4:
         opcion_4()
+    elif opcion == 5:
+        opcion_5()
     system('cls')
