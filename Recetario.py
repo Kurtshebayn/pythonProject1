@@ -40,7 +40,7 @@ def pedir_opcion():
             print("Seleciona bien la opcion, tio!")
 
 
-def selecionar_categoria():
+def seleccionar_categoria():
     numero = 0
     numero2 = 0
     categoria_elegida = ''
@@ -55,10 +55,9 @@ def selecionar_categoria():
     return categoria_elegida
 
 
-def opcion_1():
-    numero = 0
+def seleccionar_receta(categoria):
     receta_elegida = ''
-    categoria = selecionar_categoria()
+    numero = 0
     for txt in Path(categoria).glob('*.txt'):
         numero += 1
         print(str(numero) + '.-' + txt.stem)
@@ -68,10 +67,30 @@ def opcion_1():
         numero += 1
         if str(numero) == opcion_receta:
             receta_elegida = receta
+    return receta_elegida
+
+
+def opcion_1():
+    categoria = seleccionar_categoria()
+    receta_elegida = seleccionar_receta(categoria)
     leer_receta = open(Path(receta_elegida))
     print("La receta que has elegido es " + receta_elegida.stem + " y su contenido es el siguiente: ")
     print(leer_receta.read() + '\n')
     volver_al_menu()
+
+
+def opcion_2():
+    categoria_elegida = seleccionar_categoria()
+    nombre_receta_nueva = input("Dame el nombre de la receta nueva chaval: ") + ".txt"
+    contenido_receta_nueva = input("Ahora escribe el contenido de la receta: ")
+    ruta_receta_nueva = Path(categoria_elegida,nombre_receta_nueva)
+    with open(Path(ruta_receta_nueva),'w') as file:
+        file.write(contenido_receta_nueva)
+    print("En hora buena primo, tu receta ha sido creada")
+    volver_al_menu()
+
+
+def opcion_3():
 
 
 while opcion < 6:
@@ -86,4 +105,6 @@ while opcion < 6:
     opcion = pedir_opcion()
     if opcion == 1:
         opcion_1()
+    elif opcion == 2:
+        opcion_2()
     system('cls')
